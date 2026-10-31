@@ -1,0 +1,45 @@
+ZAYRO RACING — BUILD NOTES
+- Preserved the existing 4.0 game systems and gameplay code.
+- Added Daily Happiness Gift: 300–700 random credits once per local calendar day.
+- Consecutive daily claims add +100 CR per streak day beyond day 1, capped at +500 bonus.
+- Daily reward date/streak stored locally under dilseDailyGiftDate and dilseDailyGiftStreak.
+- Removed the 4.1 suffix from the game name and corrected the header branding to ZAYRO RACING.
+- Checks performed: JavaScript syntax, Python syntax, HTML parse/IDs, asset references, HTTP smoke test, ZIP integrity.
+- Full interactive WebGL gameplay was not exhaustively tested.
+
+
+- Added three driving profiles: PC keyboard/arrow keys, mobile touch buttons, and virtual steering wheel.
+- Touch buttons and steering wheel modes both include on-screen accelerator, brake, reverse and nitro controls.
+- Coarse-pointer/mobile devices default to touch buttons; the selected driving profile is saved locally.
+- PC users retain keyboard/arrow controls and can optionally select either touch mode.
+
+
+ULTRA GRAPHICS UPGRADE
+- Improved WebGL lighting with directional light, sky fill and subtle rim lighting.
+- Added metallic clear-coat highlights and view-angle Fresnel reflections to car paint and trim.
+- Enhanced asphalt micro-texture, road sheen and wet-road reflections in rain.
+- Refined headlight falloff and atmospheric fog distance for stronger depth.
+- Ultra preset now uses a sharper render scale; adaptive scaling remains enabled to help maintain performance.
+- Select GRAPHICS QUALITY -> ULTRA in the garage for the highest-quality render setting.
+- These are stylized real-time WebGL effects, not a full ray-traced renderer; performance depends on the device/browser.
+
+
+ZAYRO PRO PACK v5.0 (zayro_plus.js + zayro_plus.css, loaded after game.js; base game code untouched)
+- Driver XP and levels (ROOKIE -> ICON). XP from distance, near misses, skill points and finishes; level-ups pay credits.
+- 15 achievements with credit rewards and unlock banners; shown in the garage.
+- 3 daily challenges (change every local day) with credit rewards.
+- Speed lines, nitro vignette and low-health red pulse overlay (reduced on Performance mode / low FPS).
+- Live callouts: NEAR MISS, COMBO, SLIPSTREAM, 200/250/300 KM/H.
+- Run report on finish/eliminated screen, plus a skill-score credit bonus (and +150 CR for a crash-free finish).
+- Shortcuts: P pause, F fullscreen, M music. Race auto-pauses when the tab is hidden.
+- New save keys zayroXP, zayroAch, zayroDaily, zayroStats are included in driver-save export/import.
+
+ZAYRO REALISM PACK v7.0
+- index.html now loads zayro_realism.css/js (v6.0 GTA layer) after zayro_plus.js.
+- game.js: new vertex/fragment shaders (sky dome, env reflections, wet road, lamp pools, lit windows, grading), weather-aware fog/clear colour, lag chase camera.
+- Fixed: road asphalt was 0.07 above lane markings, hiding them; road/cross-street slabs lowered, car contact shadow re-seated.
+- Tested headless (software WebGL): clear/rain/night, race and city modes, all 5 road themes loaded, no console errors. Real-GPU frame rate not measured.
+
+ZAYRO CARS v8.0
+- New zayro_cars.js (loaded after zayro_realism.js) replaces drawCar with lofted smooth meshes (5 styles). Trucks/buses unchanged.
+- Tested headless: rear/3-4/side views, day + night, no console errors. Not measured on a real GPU.
